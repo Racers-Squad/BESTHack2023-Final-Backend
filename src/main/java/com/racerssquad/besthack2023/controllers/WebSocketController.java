@@ -16,13 +16,13 @@ public class WebSocketController {
         this.messagingTemplate = messagingTemplate;
     }
 
-    @MessageMapping("/ping")
-    @SendTo("/topic/ping")
+    @MessageMapping("/auth")
+    @SendTo("/topic/auth")
     @CrossOrigin("*")
     public String handlePing(String message) {
         System.out.println("Received message: " + message);
         String response = "Pong " + System.currentTimeMillis();
-        messagingTemplate.convertAndSend("/topic/ping", response);
+        messagingTemplate.convertAndSend("/topic/auth", response);
         return response;
     }
 }
