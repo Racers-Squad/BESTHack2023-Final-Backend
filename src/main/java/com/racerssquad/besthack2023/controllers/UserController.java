@@ -1,7 +1,7 @@
 package com.racerssquad.besthack2023.controllers;
 
 
-import com.racerssquad.besthack2023.POJO.AuthRequest;
+import com.racerssquad.besthack2023.DTO.AuthRequest;
 import com.racerssquad.besthack2023.exceptions.UserAlreadyExistsException;
 import com.racerssquad.besthack2023.security.JwtUtils;
 import com.racerssquad.besthack2023.services.UserService;
@@ -11,8 +11,6 @@ import com.racerssquad.besthack2023.exceptions.WrongPasswordException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
 @CrossOrigin("http://localhost:3000")

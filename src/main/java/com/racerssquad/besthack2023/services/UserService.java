@@ -1,6 +1,6 @@
 package com.racerssquad.besthack2023.services;
 
-import com.racerssquad.besthack2023.POJO.AuthRequest;
+import com.racerssquad.besthack2023.DTO.AuthRequest;
 import com.racerssquad.besthack2023.entites.UserEntity;
 import com.racerssquad.besthack2023.exceptions.UserAlreadyExistsException;
 import com.racerssquad.besthack2023.exceptions.UserNotFoundException;

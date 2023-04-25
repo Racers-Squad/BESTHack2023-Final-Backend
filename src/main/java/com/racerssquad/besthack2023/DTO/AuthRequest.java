@@ -1,4 +1,4 @@
-package com.racerssquad.besthack2023.POJO;
+package com.racerssquad.besthack2023.DTO;
 
 public class AuthRequest {
 
