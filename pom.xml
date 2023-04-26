@@ -70,11 +70,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-mockmvc</artifactId>
@@ -89,11 +84,6 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.testcontainers</groupId>-->
-<!--            <artifactId>junit-jupiter</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
@@ -110,23 +100,17 @@
             <version>6.0.5</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-core</artifactId>
+            <version>6.0.5</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>3.22.3</version>
         </dependency>
     </dependencies>
-<!--    <dependencyManagement>-->
-<!--        <dependencies>-->
-<!--            <dependency>-->
-<!--                <groupId>org.testcontainers</groupId>-->
-<!--                <artifactId>testcontainers-bom</artifactId>-->
-<!--                <version>${testcontainers.version}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-<!--        </dependencies>-->
-<!--    </dependencyManagement>-->
-
     <build>
         <plugins>
             <plugin>
@@ -171,33 +155,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.xolstice.maven.plugins</groupId>-->
-<!--                <artifactId>protobuf-maven-plugin</artifactId>-->
-<!--                <version>${protobuf-plugin.version}</version>-->
-<!--                <extensions>true</extensions>-->
-<!--                <configuration>-->
-<!--                    <protocExecutable>/usr/bin/protoc</protocExecutable>-->
-<!--                    <protocArguments>-->
-<!--                        <arg>&#45;&#45;experimental_allow_proto3_optional</arg>-->
-<!--                    </protocArguments>-->
-<!--                    <plugins>-->
-<!--                        <plugin>-->
-<!--                            <groupId>com.google.protobuf.tools</groupId>-->
-<!--                            <artifactId>protobuf-java</artifactId>-->
-<!--                            <version>3.12.0</version>-->
-<!--                        </plugin>-->
-<!--                    </plugins>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>compile</goal>-->
-<!--                            <goal>test-compile</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
