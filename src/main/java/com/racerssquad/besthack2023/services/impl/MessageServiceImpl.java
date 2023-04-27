@@ -1,6 +1,6 @@
-package com.racerssquad.besthack2023.TCPserver.service.impl;
+package com.racerssquad.besthack2023.services.impl;
 
-import com.racerssquad.besthack2023.TCPserver.service.MessageService;
+import com.racerssquad.besthack2023.services.MessageService;
 import org.springframework.stereotype.Service;
 
 @Service
