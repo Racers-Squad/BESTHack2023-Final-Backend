@@ -1,7 +1,9 @@
 package com.racerssquad.besthack2023.configs;
 
+import com.racerssquad.besthack2023.DTO.proto.ExchangeInfoMessage;
 import com.racerssquad.besthack2023.handler.MyTcpNioConnectionSupport;
 import com.racerssquad.besthack2023.util.CustomDeserializer;
+import com.racerssquad.besthack2023.util.MessageToExchangeInfoDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +14,7 @@ import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.ip.tcp.TcpInboundGateway;
 import org.springframework.integration.ip.tcp.TcpOutboundGateway;
 import org.springframework.integration.ip.tcp.connection.*;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 
 @Configuration
@@ -28,7 +31,6 @@ public class TCPServerConfig {
         serverConnectionFactory.setUsingDirectBuffers(true);
         serverConnectionFactory.setDeserializer(new CustomDeserializer());
         serverConnectionFactory.setTcpNioConnectionSupport(new MyTcpNioConnectionSupport());
-
         return serverConnectionFactory;
     }
 
@@ -61,7 +63,9 @@ public class TCPServerConfig {
     @Bean
     public IntegrationFlow integrationFlow() {
         return IntegrationFlow.from(inboundChannel())
+                .<Message<ExchangeInfoMessage>, ExchangeInfoMessage>transform(Message::getPayload)
                 .handle("mes_service", "processMessage")
+//                .handle("handshake_service", "processHandshake")
 //                .channel(outboundChannel())
                 .get();
     }
