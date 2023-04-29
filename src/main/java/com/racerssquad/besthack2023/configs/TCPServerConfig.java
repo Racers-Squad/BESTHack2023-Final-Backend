@@ -28,6 +28,7 @@ public class TCPServerConfig {
         serverConnectionFactory.setUsingDirectBuffers(true);
         serverConnectionFactory.setDeserializer(new CustomDeserializer());
         serverConnectionFactory.setTcpNioConnectionSupport(new MyTcpNioConnectionSupport());
+
         return serverConnectionFactory;
     }
 

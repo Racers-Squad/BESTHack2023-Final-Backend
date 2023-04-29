@@ -1,24 +1,26 @@
 package com.racerssquad.besthack2023.util;
 
+import com.racerssquad.besthack2023.DTO.proto.ExchangeInfoMessage;
 import org.springframework.core.serializer.Deserializer;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
-public class CustomDeserializer implements Deserializer<Message<String>> {
+public class CustomDeserializer implements Deserializer<Message<ExchangeInfoMessage>> {
 
     @Override
-    public Message<String> deserializeFromByteArray(byte[] serialized) throws IOException {
-        String payload = new String(serialized, StandardCharsets.UTF_8);
-        return MessageBuilder.withPayload(payload).build();
+    public Message<ExchangeInfoMessage> deserializeFromByteArray(byte[] serialized)
+            throws IOException {
+        ExchangeInfoMessage exchangeMessageFromMessage = MessageToExchangeInfoDeserializer.getExchangeMessageFromMessage(serialized);
+        return MessageBuilder.withPayload(exchangeMessageFromMessage).build();
     }
 
     @Override
-    public Message<String> deserialize(InputStream inputStream) throws IOException {
-        String payload = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-        return MessageBuilder.withPayload(payload).build();
+    public Message<ExchangeInfoMessage> deserialize(InputStream inputStream) throws IOException {
+        byte[] serBytes = inputStream.readAllBytes();
+        ExchangeInfoMessage exchangeMessageFromMessage = MessageToExchangeInfoDeserializer.getExchangeMessageFromMessage(serBytes);
+        return MessageBuilder.withPayload(exchangeMessageFromMessage).build();
     }
 }
