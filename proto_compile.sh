@@ -4,6 +4,7 @@ DST_DIR=./src/main/java/
 protoc -I=$SRC_DIR --java_out=$DST_DIR MessageEnums.proto --experimental_allow_proto3_optional
 protoc -I=$SRC_DIR --java_out=$DST_DIR ValueRef.proto --experimental_allow_proto3_optional
 protoc -I=$SRC_DIR --java_out=$DST_DIR AdvInfoFieldRef.proto --experimental_allow_proto3_optional
+protoc -I=$SRC_DIR --java_out=$DST_DIR DataFieldValue.proto --experimental_allow_proto3_optional
 protoc -I=$SRC_DIR --java_out=$DST_DIR DataRow.proto --experimental_allow_proto3_optional
 protoc -I=$SRC_DIR --java_out=$DST_DIR AdvInfoData.proto --experimental_allow_proto3_optional
 protoc -I=$SRC_DIR --java_out=$DST_DIR AdvInfo.proto --experimental_allow_proto3_optional

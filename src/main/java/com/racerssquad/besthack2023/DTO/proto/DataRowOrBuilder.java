@@ -39,45 +39,45 @@ public interface DataRowOrBuilder extends
 
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
-  java.util.List<com.racerssquad.besthack2023.DTO.proto.ValueRef> 
+  java.util.List<com.racerssquad.besthack2023.DTO.proto.DataFieldValue> 
       getValuesList();
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
-  com.racerssquad.besthack2023.DTO.proto.ValueRef getValues(int index);
+  com.racerssquad.besthack2023.DTO.proto.DataFieldValue getValues(int index);
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
   int getValuesCount();
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
-  java.util.List<? extends com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder> 
+  java.util.List<? extends com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder> 
       getValuesOrBuilderList();
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
-  com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder getValuesOrBuilder(
+  com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder getValuesOrBuilder(
       int index);
 }
