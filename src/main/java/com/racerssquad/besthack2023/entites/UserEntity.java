@@ -3,7 +3,7 @@ package com.racerssquad.besthack2023.entites;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Getter
 @Setter
