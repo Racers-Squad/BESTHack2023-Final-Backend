@@ -1,5 +1,6 @@
 package com.racerssquad.besthack2023.configs;
 
+import com.racerssquad.besthack2023.util.CustomDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ public class TCPServerConfig {
     @Value("${tcp.server.port}")
     private int port;
 
+    //фабрика соединений
     @Bean
     public AbstractServerConnectionFactory serverConnectionFactory() {
         TcpNioServerConnectionFactory serverConnectionFactory = new TcpNioServerConnectionFactory(port);

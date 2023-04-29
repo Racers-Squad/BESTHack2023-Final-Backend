@@ -1,4 +1,4 @@
-package com.racerssquad.besthack2023.configs;
+package com.racerssquad.besthack2023.util;
 
 import org.springframework.core.serializer.Deserializer;
 import org.springframework.messaging.Message;
