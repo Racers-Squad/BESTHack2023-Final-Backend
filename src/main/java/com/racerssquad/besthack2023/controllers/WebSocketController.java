@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static java.util.Arrays.asList;
+
 @Controller
 @Slf4j
 public class WebSocketController {
@@ -35,7 +37,8 @@ public class WebSocketController {
                     10251, 10834, 10682, 11265, 11113, 11696, 11544, 12127, 11975, 12558, 12406, 12989, 12837, 13420, 13268,
                     13851, 13699, 14282));
         }
-        messagingTemplate.convertAndSend("/topic/price", response);
-        return response;
+        //@TODO реализовать данные второго графика
+            messagingTemplate.convertAndSend("/topic/price", response);
+            return response;
+        }
     }
-}
