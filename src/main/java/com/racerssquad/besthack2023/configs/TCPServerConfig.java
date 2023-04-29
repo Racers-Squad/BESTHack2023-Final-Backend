@@ -1,5 +1,6 @@
 package com.racerssquad.besthack2023.configs;
 
+import com.racerssquad.besthack2023.handler.MyTcpNioConnectionSupport;
 import com.racerssquad.besthack2023.util.CustomDeserializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -26,6 +27,7 @@ public class TCPServerConfig {
         TcpNioServerConnectionFactory serverConnectionFactory = new TcpNioServerConnectionFactory(port);
         serverConnectionFactory.setUsingDirectBuffers(true);
         serverConnectionFactory.setDeserializer(new CustomDeserializer());
+        serverConnectionFactory.setTcpNioConnectionSupport(new MyTcpNioConnectionSupport());
         return serverConnectionFactory;
     }
 
