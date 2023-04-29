@@ -7,10 +7,12 @@ import com.racerssquad.besthack2023.exceptions.UserNotFoundException;
 import com.racerssquad.besthack2023.exceptions.WrongPasswordException;
 import com.racerssquad.besthack2023.repositories.UserRepository;
 import com.racerssquad.besthack2023.security.Hasher;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class UserService {
     @Autowired
     private UserRepository userRepository;
