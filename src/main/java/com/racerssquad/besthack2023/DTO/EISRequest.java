@@ -5,7 +5,7 @@ public class EISRequest {
     private String name;
     private int id;
 
-    public EISRequest(String name, int id) {
+    public EISRequest(int id, String name) {
         this.id = id;
         this.name = name;
     }
