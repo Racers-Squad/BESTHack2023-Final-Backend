@@ -1,6 +1,7 @@
 package com.racerssquad.besthack2023.controllers;
 
 import com.racerssquad.besthack2023.DTO.ChartRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -14,6 +15,7 @@ import java.util.Arrays;
 import static java.util.Arrays.asList;
 
 @Controller
+@Slf4j
 public class WebSocketController {
     private final SimpMessagingTemplate messagingTemplate;
 
@@ -26,8 +28,8 @@ public class WebSocketController {
     @SendTo("/topic/stock")
     @CrossOrigin("*")
     public ArrayList<Number> handlePrice(ChartRequest stock) {
+        log.debug("Getting information about stocks " + stock.getStock());
         ArrayList<Number> response = new ArrayList<>();
-        System.out.println(stock.getChartType());
         if (stock.getChartType().equals("1")) {
             response = new ArrayList<>(Arrays.asList(1200, 1783, 1631, 2214, 2062, 2645, 2493, 3076,
                     2924, 3507, 3355, 3938, 3786, 4369, 4217, 4800, 4648, 5231, 5079, 5662, 5510, 6093, 5941, 6524, 6372,
