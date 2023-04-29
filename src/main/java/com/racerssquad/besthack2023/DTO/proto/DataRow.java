@@ -64,11 +64,11 @@ private static final long serialVersionUID = 0L;
           }
           case 26: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              values_ = new java.util.ArrayList<com.racerssquad.besthack2023.DTO.proto.ValueRef>();
+              values_ = new java.util.ArrayList<com.racerssquad.besthack2023.DTO.proto.DataFieldValue>();
               mutable_bitField0_ |= 0x00000001;
             }
             values_.add(
-                input.readMessage(com.racerssquad.besthack2023.DTO.proto.ValueRef.parser(), extensionRegistry));
+                input.readMessage(com.racerssquad.besthack2023.DTO.proto.DataFieldValue.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -168,36 +168,36 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int VALUES_FIELD_NUMBER = 3;
-  private java.util.List<com.racerssquad.besthack2023.DTO.proto.ValueRef> values_;
+  private java.util.List<com.racerssquad.besthack2023.DTO.proto.DataFieldValue> values_;
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
   @java.lang.Override
-  public java.util.List<com.racerssquad.besthack2023.DTO.proto.ValueRef> getValuesList() {
+  public java.util.List<com.racerssquad.besthack2023.DTO.proto.DataFieldValue> getValuesList() {
     return values_;
   }
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder> 
+  public java.util.List<? extends com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder> 
       getValuesOrBuilderList() {
     return values_;
   }
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
   @java.lang.Override
   public int getValuesCount() {
@@ -205,24 +205,24 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
   @java.lang.Override
-  public com.racerssquad.besthack2023.DTO.proto.ValueRef getValues(int index) {
+  public com.racerssquad.besthack2023.DTO.proto.DataFieldValue getValues(int index) {
     return values_.get(index);
   }
   /**
    * <pre>
-   * Описание значения поля
+   * Описание поля с установкой значения поля
    * </pre>
    *
-   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+   * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
    */
   @java.lang.Override
-  public com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder getValuesOrBuilder(
+  public com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder getValuesOrBuilder(
       int index) {
     return values_.get(index);
   }
@@ -743,26 +743,26 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<com.racerssquad.besthack2023.DTO.proto.ValueRef> values_ =
+    private java.util.List<com.racerssquad.besthack2023.DTO.proto.DataFieldValue> values_ =
       java.util.Collections.emptyList();
     private void ensureValuesIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        values_ = new java.util.ArrayList<com.racerssquad.besthack2023.DTO.proto.ValueRef>(values_);
+        values_ = new java.util.ArrayList<com.racerssquad.besthack2023.DTO.proto.DataFieldValue>(values_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.racerssquad.besthack2023.DTO.proto.ValueRef, com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder, com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder> valuesBuilder_;
+        com.racerssquad.besthack2023.DTO.proto.DataFieldValue, com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder, com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder> valuesBuilder_;
 
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public java.util.List<com.racerssquad.besthack2023.DTO.proto.ValueRef> getValuesList() {
+    public java.util.List<com.racerssquad.besthack2023.DTO.proto.DataFieldValue> getValuesList() {
       if (valuesBuilder_ == null) {
         return java.util.Collections.unmodifiableList(values_);
       } else {
@@ -771,10 +771,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public int getValuesCount() {
       if (valuesBuilder_ == null) {
@@ -785,12 +785,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public com.racerssquad.besthack2023.DTO.proto.ValueRef getValues(int index) {
+    public com.racerssquad.besthack2023.DTO.proto.DataFieldValue getValues(int index) {
       if (valuesBuilder_ == null) {
         return values_.get(index);
       } else {
@@ -799,13 +799,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public Builder setValues(
-        int index, com.racerssquad.besthack2023.DTO.proto.ValueRef value) {
+        int index, com.racerssquad.besthack2023.DTO.proto.DataFieldValue value) {
       if (valuesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -820,13 +820,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public Builder setValues(
-        int index, com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder builderForValue) {
+        int index, com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder builderForValue) {
       if (valuesBuilder_ == null) {
         ensureValuesIsMutable();
         values_.set(index, builderForValue.build());
@@ -838,12 +838,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public Builder addValues(com.racerssquad.besthack2023.DTO.proto.ValueRef value) {
+    public Builder addValues(com.racerssquad.besthack2023.DTO.proto.DataFieldValue value) {
       if (valuesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -858,13 +858,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public Builder addValues(
-        int index, com.racerssquad.besthack2023.DTO.proto.ValueRef value) {
+        int index, com.racerssquad.besthack2023.DTO.proto.DataFieldValue value) {
       if (valuesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -879,13 +879,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public Builder addValues(
-        com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder builderForValue) {
+        com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder builderForValue) {
       if (valuesBuilder_ == null) {
         ensureValuesIsMutable();
         values_.add(builderForValue.build());
@@ -897,13 +897,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public Builder addValues(
-        int index, com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder builderForValue) {
+        int index, com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder builderForValue) {
       if (valuesBuilder_ == null) {
         ensureValuesIsMutable();
         values_.add(index, builderForValue.build());
@@ -915,13 +915,13 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public Builder addAllValues(
-        java.lang.Iterable<? extends com.racerssquad.besthack2023.DTO.proto.ValueRef> values) {
+        java.lang.Iterable<? extends com.racerssquad.besthack2023.DTO.proto.DataFieldValue> values) {
       if (valuesBuilder_ == null) {
         ensureValuesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -934,10 +934,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public Builder clearValues() {
       if (valuesBuilder_ == null) {
@@ -951,10 +951,10 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
     public Builder removeValues(int index) {
       if (valuesBuilder_ == null) {
@@ -968,23 +968,23 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder getValuesBuilder(
+    public com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder getValuesBuilder(
         int index) {
       return getValuesFieldBuilder().getBuilder(index);
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder getValuesOrBuilder(
+    public com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder getValuesOrBuilder(
         int index) {
       if (valuesBuilder_ == null) {
         return values_.get(index);  } else {
@@ -993,12 +993,12 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public java.util.List<? extends com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder> 
+    public java.util.List<? extends com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder> 
          getValuesOrBuilderList() {
       if (valuesBuilder_ != null) {
         return valuesBuilder_.getMessageOrBuilderList();
@@ -1008,44 +1008,44 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder addValuesBuilder() {
+    public com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder addValuesBuilder() {
       return getValuesFieldBuilder().addBuilder(
-          com.racerssquad.besthack2023.DTO.proto.ValueRef.getDefaultInstance());
+          com.racerssquad.besthack2023.DTO.proto.DataFieldValue.getDefaultInstance());
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder addValuesBuilder(
+    public com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder addValuesBuilder(
         int index) {
       return getValuesFieldBuilder().addBuilder(
-          index, com.racerssquad.besthack2023.DTO.proto.ValueRef.getDefaultInstance());
+          index, com.racerssquad.besthack2023.DTO.proto.DataFieldValue.getDefaultInstance());
     }
     /**
      * <pre>
-     * Описание значения поля
+     * Описание поля с установкой значения поля
      * </pre>
      *
-     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.ValueRef values = 3;</code>
+     * <code>repeated .com.racerssquad.besthack2023.DTO.proto.DataFieldValue values = 3;</code>
      */
-    public java.util.List<com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder> 
+    public java.util.List<com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder> 
          getValuesBuilderList() {
       return getValuesFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.racerssquad.besthack2023.DTO.proto.ValueRef, com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder, com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder> 
+        com.racerssquad.besthack2023.DTO.proto.DataFieldValue, com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder, com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder> 
         getValuesFieldBuilder() {
       if (valuesBuilder_ == null) {
         valuesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.racerssquad.besthack2023.DTO.proto.ValueRef, com.racerssquad.besthack2023.DTO.proto.ValueRef.Builder, com.racerssquad.besthack2023.DTO.proto.ValueRefOrBuilder>(
+            com.racerssquad.besthack2023.DTO.proto.DataFieldValue, com.racerssquad.besthack2023.DTO.proto.DataFieldValue.Builder, com.racerssquad.besthack2023.DTO.proto.DataFieldValueOrBuilder>(
                 values_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
