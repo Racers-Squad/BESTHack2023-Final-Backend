@@ -2,7 +2,7 @@ package com.racerssquad.besthack2023.services;
 
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("mes_service")
 public class MessageService {
 
     public byte[] processMessage(byte[] message){
