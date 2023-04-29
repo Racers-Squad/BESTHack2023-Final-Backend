@@ -1,12 +1,20 @@
 package com.racerssquad.besthack2023.DTO;
 
 public class EISRequest {
+    private Integer id;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     private String name;
-    private int delay;
 
-    public EISRequest(String name, int delay) {
-        this.delay = delay;
+    public EISRequest(Integer id, String name) {
+        this.id = id;
         this.name = name;
     }
 
@@ -18,11 +26,4 @@ public class EISRequest {
         this.name = name;
     }
 
-    public int getDelay() {
-        return delay;
-    }
-
-    public void setDelay(int delay) {
-        this.delay = delay;
-    }
 }

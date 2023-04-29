@@ -26,8 +26,8 @@ public class WebSocketController {
     @SendTo("/topic/stock")
     @CrossOrigin("*")
     public ArrayList<Number> handlePrice(ChartRequest stock) {
-        System.out.println("Received message: " + stock.toString());
         ArrayList<Number> response = new ArrayList<>();
+        System.out.println(stock.getChartType());
         if (stock.getChartType().equals("1")) {
             response = new ArrayList<>(Arrays.asList(1200, 1783, 1631, 2214, 2062, 2645, 2493, 3076,
                     2924, 3507, 3355, 3938, 3786, 4369, 4217, 4800, 4648, 5231, 5079, 5662, 5510, 6093, 5941, 6524, 6372,
@@ -35,6 +35,7 @@ public class WebSocketController {
                     10251, 10834, 10682, 11265, 11113, 11696, 11544, 12127, 11975, 12558, 12406, 12989, 12837, 13420, 13268,
                     13851, 13699, 14282));
         }
+        //@TODO реализовать данные второго графика
             messagingTemplate.convertAndSend("/topic/price", response);
             return response;
         }
