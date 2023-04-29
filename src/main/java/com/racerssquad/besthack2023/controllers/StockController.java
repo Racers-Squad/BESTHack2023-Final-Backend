@@ -1,6 +1,7 @@
 package com.racerssquad.besthack2023.controllers;
 
 import com.racerssquad.besthack2023.DTO.StockRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
+@Slf4j
 public class StockController {
 
     ArrayList<StockRequest> services = new ArrayList<>() {{
@@ -28,11 +30,13 @@ public class StockController {
 
     @GetMapping("/stocks/{name}")
     public ResponseEntity<?> getStocks(@PathVariable String name) {
+        log.info("Getting stocks for name " + name);
         return ResponseEntity.ok(services);
     }
 
     @GetMapping("/stock/{code}")
     public ResponseEntity<?> getStockByCode(@PathVariable String code) {
+        log.info("Getting stocks for code: " + code);
         for (StockRequest stock : services) {
             if (stock.getCode().equals(code)) {
                 return ResponseEntity.ok(stock);
