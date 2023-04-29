@@ -5,6 +5,7 @@ import com.racerssquad.besthack2023.DTO.AuthRequest;
 import com.racerssquad.besthack2023.exceptions.UserAlreadyExistsException;
 import com.racerssquad.besthack2023.security.JwtUtils;
 import com.racerssquad.besthack2023.services.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.racerssquad.besthack2023.exceptions.UserNotFoundException;
 import com.racerssquad.besthack2023.exceptions.WrongPasswordException;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -26,11 +28,13 @@ public class UserController {
     public ResponseEntity<?> register(@RequestBody AuthRequest user) {
         try {
             userService.register(user);
+            log.debug("User " + user.getEmail() + " registered");
             return ResponseEntity.ok(jwtUtils.generateToken(user.getEmail()));
         } catch (UserAlreadyExistsException e) {
+            log.debug("User " + user.getEmail() + " already exists");
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("An error occured in server", e);
             return ResponseEntity.badRequest().body("An error occurred on the server");
         }
     }
@@ -39,6 +43,7 @@ public class UserController {
     public ResponseEntity<?> login(@RequestBody AuthRequest user) {
         try {
             userService.login(user);
+            log.debug("User " + user.getEmail() + " logged in");
             return ResponseEntity.ok(jwtUtils.generateToken(user.getEmail()));
         } catch (UserNotFoundException | WrongPasswordException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -51,9 +56,11 @@ public class UserController {
         String token = jwtUtils.restructJwtHeader(auth);
         if(token != null){
             if(jwtUtils.validateToken(token)){
+                log.trace("Successful token check");
                 return ResponseEntity.ok(jwtUtils.generateToken(jwtUtils.getEmailFromToken(token)));
             }
         }
+        log.debug("Unsuccessful token check");
         return ResponseEntity.ok("LOGOUT");
     }
 
