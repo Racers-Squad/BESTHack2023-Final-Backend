@@ -1,18 +1,25 @@
 package com.racerssquad.besthack2023.services;
 
-import com.racerssquad.besthack2023.DTO.proto.ExchangeInfoMessage;
-import com.racerssquad.besthack2023.DTO.proto.MessageEnumsProto;
-import org.springframework.messaging.Message;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.integration.dsl.IntegrationFlow;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.stereotype.Service;
 
-@Service("handshake_service")
+@Service
 public class HandshakeService {
 
-    public ExchangeInfoMessage processHandshake(Message<ExchangeInfoMessage> msg) {
-        ExchangeInfoMessage payload = msg.getPayload();
-        if (payload.getRequest().getCommand() == MessageEnumsProto.CommandType.ctHandshake) {
-            System.out.println("ETO HANDSHAKE!!");
-        }
-        return payload;
+    @Autowired
+    public CentralService centralService;
+
+    final MessageChannel HTTPChannelIn;
+
+    public HandshakeService(MessageChannel HTTPChannelIn) {
+        this.HTTPChannelIn = HTTPChannelIn;
+    }
+
+    @Bean
+    public IntegrationFlow getMessage(){
+        return IntegrationFlow.from(HTTPChannelIn).handle(System.out::println).get();
     }
 }
