@@ -21,7 +21,6 @@ public class TCPServerConfig {
     @Value("${tcp.server.port}")
     private int port;
 
-    //фабрика соединений
     @Bean
     public AbstractServerConnectionFactory serverConnectionFactory() {
         TcpNioServerConnectionFactory serverConnectionFactory = new TcpNioServerConnectionFactory(port);
@@ -60,7 +59,7 @@ public class TCPServerConfig {
     public IntegrationFlow integrationFlow() {
         return IntegrationFlow.from(inboundChannel())
                 .handle("mes_service", "processMessage")
-                .channel(outboundChannel())
+//                .channel(outboundChannel())
                 .get();
     }
 }

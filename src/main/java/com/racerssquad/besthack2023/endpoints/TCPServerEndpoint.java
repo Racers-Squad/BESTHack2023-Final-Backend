@@ -3,6 +3,7 @@ package com.racerssquad.besthack2023.endpoints;
 import com.racerssquad.besthack2023.services.MessageService;
 import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
+import org.springframework.messaging.Message;
 
 @MessageEndpoint
 public class TCPServerEndpoint {
@@ -14,7 +15,7 @@ public class TCPServerEndpoint {
     }
 
     @ServiceActivator(inputChannel = "inboundChannel")
-    public byte[] process(byte[] message) {
-        return messageService.processMessage(message);
+    public byte[] process(Message<String> msg) {
+        return messageService.processMessage(msg);
     }
 }
