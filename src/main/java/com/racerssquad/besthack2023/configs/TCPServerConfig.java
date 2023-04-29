@@ -23,16 +23,16 @@ public class TCPServerConfig {
     }
 
     @Bean
-    public MessageChannel tcpChannel() {
+    public MessageChannel inboundChannel() {
         return new DirectChannel();
     }
 
     @Bean
     public TcpInboundGateway inboundGateway(AbstractServerConnectionFactory serverConnectionFactory,
-                                            MessageChannel tcpChannel) {
+                                            MessageChannel inboundChannel) {
         TcpInboundGateway tcpInboundGateway = new TcpInboundGateway();
         tcpInboundGateway.setConnectionFactory(serverConnectionFactory);
-        tcpInboundGateway.setRequestChannel(tcpChannel);
+        tcpInboundGateway.setRequestChannel(inboundChannel);
         return tcpInboundGateway;
     }
 }
