@@ -95,7 +95,7 @@ public class TCPServerConfig {
     @Bean
     public IntegrationFlow integrationFlowToClientTcp() {
         return IntegrationFlow.from(inboundHTTPChannel())
-                .handle("handshake_service", "processMessage")
+                .handle("central_service", "processMessage")
                 .channel("TCPChannelOut")
                 .get();
     }

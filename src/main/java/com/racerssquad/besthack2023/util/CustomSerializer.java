@@ -17,8 +17,7 @@ public class CustomSerializer implements Serializer<Message<ExchangeInfoMessage>
     public void serialize(Message<ExchangeInfoMessage> object, OutputStream outputStream) throws IOException {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
              ObjectOutputStream oos = new ObjectOutputStream(bos)){
-            ExchangeInfoMessage payload = object.getPayload();
-            oos.writeObject(payload);
+            oos.writeObject(object.getPayload());
             outputStream.write(bos.toByteArray());
         }
     }
