@@ -2,6 +2,7 @@ package com.racerssquad.besthack2023.configs;
 
 import com.racerssquad.besthack2023.handler.MyTcpNioConnectionSupport;
 import com.racerssquad.besthack2023.util.CustomDeserializer;
+import com.racerssquad.besthack2023.util.CustomSerializer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,11 +26,14 @@ public class TCPServerConfig {
 
     private final CustomDeserializer deserializer = new CustomDeserializer();
 
+    private final CustomSerializer serializer = new CustomSerializer();
+
     @Bean
     public AbstractServerConnectionFactory serverConnectionFactory() {
         TcpNioServerConnectionFactory serverConnectionFactory = new TcpNioServerConnectionFactory(port);
         serverConnectionFactory.setUsingDirectBuffers(true);
         serverConnectionFactory.setDeserializer(deserializer);
+        serverConnectionFactory.setSerializer(serializer);
         serverConnectionFactory.setTcpNioConnectionSupport(new MyTcpNioConnectionSupport());
         return serverConnectionFactory;
     }
@@ -73,9 +77,6 @@ public class TCPServerConfig {
     @Bean
     public IntegrationFlow integrationFlowTCP2HTTP() {
         return IntegrationFlow.from(outboundTCPChannel())
-//                .<Message<ExchangeInfoMessage>, ExchangeInfoMessage>transform(Message::getPayload)
-//                .handle("mes_service", "processMessage")
-//                .handle("handshake_service", "processHandshake")
                 .channel(inboundHTTPChannel())
                 .get();
     }
@@ -83,7 +84,6 @@ public class TCPServerConfig {
     @Bean
     public IntegrationFlow integrationFlowHTTP2TCP(){
         return IntegrationFlow.from(outboundHTTPChannel())
-//                .transform()
                 .channel(inboundTCPChannel())
                 .get();
     }

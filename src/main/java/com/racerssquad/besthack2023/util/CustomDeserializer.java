@@ -1,7 +1,6 @@
 package com.racerssquad.besthack2023.util;
 
 import com.racerssquad.besthack2023.DTO.proto.ExchangeInfoMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.serializer.Deserializer;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
