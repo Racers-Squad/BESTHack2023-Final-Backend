@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -31,6 +32,9 @@ public class EISController {
 
     @GetMapping("/eis/get/{id}")
     public ResponseEntity<?> getModeOfData(@PathVariable String id) {
+        if (id == null) {
+            return ResponseEntity.ok(new EISInfoDTO(0, Collections.emptyList()));
+        }
         log.info("Getting mode of translating data to GUI");
         List<ParameterResponse> params = new ArrayList<>();
         params.add(new ParameterResponse(1, "Date from", "Date from which blah blah"));

@@ -8,11 +8,12 @@ import jakarta.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "user", schema = "public", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name = "user_ent", schema = "public", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
+    @SequenceGenerator(name="user_id_seq", sequenceName = "user_id_sequence", initialValue = 1, allocationSize = 1)
     @Column(name = "id", columnDefinition = "serial primary key")
     private Long id;
 
