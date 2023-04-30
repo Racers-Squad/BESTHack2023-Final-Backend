@@ -11,19 +11,19 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
 @Component
-public class CustomSerializer implements Serializer<Message<ExchangeInfoMessage>> {
+public class CustomSerializer implements Serializer<ExchangeInfoMessage> {
 
     @Override
-    public void serialize(Message<ExchangeInfoMessage> object, OutputStream outputStream) throws IOException {
+    public void serialize(ExchangeInfoMessage object, OutputStream outputStream) throws IOException {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
              ObjectOutputStream oos = new ObjectOutputStream(bos)){
-            oos.writeObject(object.getPayload());
+            oos.writeObject(object);
             outputStream.write(bos.toByteArray());
         }
     }
 
     @Override
-    public byte[] serializeToByteArray(Message<ExchangeInfoMessage> object) throws IOException {
+    public byte[] serializeToByteArray(ExchangeInfoMessage object) throws IOException {
         return Serializer.super.serializeToByteArray(object);
     }
 }

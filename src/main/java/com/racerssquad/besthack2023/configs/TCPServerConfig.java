@@ -1,6 +1,7 @@
 package com.racerssquad.besthack2023.configs;
 
 import com.racerssquad.besthack2023.handler.MyTcpNioConnectionSupport;
+import com.racerssquad.besthack2023.services.CentralService;
 import com.racerssquad.besthack2023.util.CustomDeserializer;
 import com.racerssquad.besthack2023.util.CustomSerializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,7 @@ import org.springframework.integration.ip.tcp.TcpOutboundGateway;
 import org.springframework.integration.ip.tcp.connection.AbstractServerConnectionFactory;
 import org.springframework.integration.ip.tcp.connection.TcpNioServerConnectionFactory;
 import org.springframework.messaging.MessageChannel;
+import org.springframework.messaging.support.MessageBuilder;
 
 @Configuration
 @EnableIntegration
@@ -63,46 +65,48 @@ public class TCPServerConfig {
         TcpInboundGateway tcpInboundGateway = new TcpInboundGateway();
         tcpInboundGateway.setConnectionFactory(serverConnectionFactory);
         tcpInboundGateway.setRequestChannel(inboundTCPChannel());
+        tcpInboundGateway.setReplyChannel(outboundTCPChannel());
         return tcpInboundGateway;
     }
 
-    @Bean
-    public TcpOutboundGateway outboundGateway() {
-        TcpOutboundGateway tcpOutboundGateway = new TcpOutboundGateway();
-        tcpOutboundGateway.setReplyChannel(outboundTCPChannel());
-        return tcpOutboundGateway;
-    }
+//    @Bean
+//    public TcpOutboundGateway outboundGateway() {
+//        TcpOutboundGateway tcpOutboundGateway = new TcpOutboundGateway();
+//        tcpOutboundGateway.setReplyChannel(outboundTCPChannel());
+//        return tcpOutboundGateway;
+//    }
 
     @Bean
     public IntegrationFlow integrationFlowFromTcp() {
         return IntegrationFlow.from("TCPChannelIn")
+                .handle(((payload, headers) -> MessageBuilder.withPayload(payload).build()))
                 .handle("central_service", "processMessage")
                 .channel("TCPChannelOut")
-                .handle(message -> {
-                    System.out.println("handle output tcp");
-                })
+//                .handle(message -> {
+//                    System.out.println("handle output tcp");
+//                })
                 .get();
     }
 
-    @Bean
-    public IntegrationFlow integrationFlowTCP2HTTP() {
-        return IntegrationFlow.from(outboundTCPChannel())
-                .channel(inboundHTTPChannel())
-                .get();
-    }
+//    @Bean
+//    public IntegrationFlow integrationFlowTCP2HTTP() {
+//        return IntegrationFlow.from(outboundTCPChannel())
+//                .channel(inboundHTTPChannel())
+//                .get();
+//    }
 
-    @Bean
-    public IntegrationFlow integrationFlowToClientTcp() {
-        return IntegrationFlow.from(inboundHTTPChannel())
-                .handle("central_service", "processMessage")
-                .channel("TCPChannelOut")
-                .get();
-    }
+//    @Bean
+//    public IntegrationFlow integrationFlowToClientTcp() {
+//        return IntegrationFlow.from(inboundHTTPChannel())
+//                .handle("central_service", "processMessage")
+//                .channel("TCPChannelOut")
+//                .get();
+//    }
 
-    @Bean
-    public IntegrationFlow integrationFlowHTTP2TCP() {
-        return IntegrationFlow.from(outboundHTTPChannel())
-                .channel(inboundTCPChannel())
-                .get();
-    }
+//    @Bean
+//    public IntegrationFlow integrationFlowHTTP2TCP() {
+//        return IntegrationFlow.from(outboundHTTPChannel())
+//                .channel(inboundTCPChannel())
+//                .get();
+//    }
 }
