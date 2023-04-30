@@ -79,8 +79,8 @@ public class TCPServerConfig {
     @Bean
     public IntegrationFlow integrationFlowFromTcp() {
         return IntegrationFlow.from("TCPChannelIn")
-                .handle(((payload, headers) -> MessageBuilder.withPayload(payload).build()))
-                .handle("central_service", "processMessage")
+                .handle("handshake_service", "processMessage")
+//                .handle("central_service", "processMessage")
                 .channel("TCPChannelOut")
 //                .handle(message -> {
 //                    System.out.println("handle output tcp");

@@ -50,15 +50,12 @@ public class TcpNioClient {
                             System.exit(1);
                         }
                     } else if (key.isReadable()) {
-                        count +=1;
-                        System.out.println(count);
-                        System.out.println("Pisya");
                         ByteBuffer buffer = ByteBuffer.allocate(1024 * 50);
                         int numBytesRead = client.read(buffer);
                         if (numBytesRead > 0) {
                             buffer.flip();
                             ExchangeInfoMessage receive = (ExchangeInfoMessage) clientUtil.deserialize(buffer.array());
-                            System.out.println("Received response: " + receive.getHeader().getReceiver());
+                            System.out.println("Received response: " + receive.getRequest().getCommand().toString());
                         }
                     }
                     iterator.remove();

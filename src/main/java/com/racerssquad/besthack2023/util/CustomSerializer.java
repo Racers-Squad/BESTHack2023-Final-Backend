@@ -2,9 +2,7 @@ package com.racerssquad.besthack2023.util;
 
 import com.racerssquad.besthack2023.DTO.proto.ExchangeInfoMessage;
 import org.springframework.core.serializer.Serializer;
-import org.springframework.messaging.Message;
 import org.springframework.stereotype.Component;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -17,8 +15,9 @@ public class CustomSerializer implements Serializer<ExchangeInfoMessage> {
     public void serialize(ExchangeInfoMessage object, OutputStream outputStream) throws IOException {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
              ObjectOutputStream oos = new ObjectOutputStream(bos)){
-            oos.writeObject(object);
-            outputStream.write(bos.toByteArray());
+             ExchangeInfoMessage payload = object;
+             oos.writeObject(payload);
+             outputStream.write(bos.toByteArray());
         }
     }
 

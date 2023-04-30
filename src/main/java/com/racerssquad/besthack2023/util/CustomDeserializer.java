@@ -14,17 +14,18 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.Arrays;
 
 @Component
-public class CustomDeserializer implements Deserializer<Message<ExchangeInfoMessage>> {
+public class CustomDeserializer implements Deserializer<ExchangeInfoMessage> {
 
     @Override
-    public Message<ExchangeInfoMessage> deserializeFromByteArray(byte[] serialized)
+    public ExchangeInfoMessage deserializeFromByteArray(byte[] serialized)
             throws IOException {
         ExchangeInfoMessage exchangeMessageFromMessage = MessageToExchangeInfoDeserializer.getExchangeMessageFromMessage(serialized);
-        return MessageBuilder.withPayload(exchangeMessageFromMessage).build();
+//        return MessageBuilder.withPayload(exchangeMessageFromMessage).build();
+        return exchangeMessageFromMessage;
     }
 
     @Override
-    public Message<ExchangeInfoMessage> deserialize(InputStream inputStream) throws IOException {
+    public ExchangeInfoMessage deserialize(InputStream inputStream) throws IOException {
         ByteBuffer buffer = ByteBuffer.allocate(1024); // выделяем буфер для чтения
         ReadableByteChannel channel = Channels.newChannel(inputStream); // создаем ReadableByteChannel из InputStream
 
@@ -32,7 +33,7 @@ public class CustomDeserializer implements Deserializer<Message<ExchangeInfoMess
         byte[] serBytes = Arrays.copyOf(buffer.array(), bytesRead); // копируем прочитанные байты в новый массив
 
         ExchangeInfoMessage exchangeMessageFromMessage = MessageToExchangeInfoDeserializer.getExchangeMessageFromMessage(serBytes);
-        Message<ExchangeInfoMessage> msg = MessageBuilder.withPayload(exchangeMessageFromMessage).build();
-        return msg;
+//        ExchangeInfoMessage msg = MessageBuilder.withPayload(exchangeMessageFromMessage).build();
+        return exchangeMessageFromMessage;
     }
 }
