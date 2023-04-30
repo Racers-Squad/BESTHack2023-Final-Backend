@@ -1,7 +1,6 @@
 package com.racerssquad.besthack2023.controllers;
 
 import com.racerssquad.besthack2023.DTO.*;
-import com.racerssquad.besthack2023.DTO.proto.*;
 import com.racerssquad.besthack2023.services.CentralService;
 import com.racerssquad.besthack2023.util.GenerateRequestToExecuteCommand;
 import lombok.extern.slf4j.Slf4j;
@@ -60,7 +59,7 @@ public class EISController {
     }
 
     @PostMapping("/{id}/execute")
-    public ResponseEntity<?> getModeOfData(@PathVariable String id, @RequestBody CommandRequest request, @Autowired MessageChannel outboundTCPChannel) {
+    public ResponseEntity<?> getModeOfData(@PathVariable String id, @RequestBody CommandRequest request) {
         log.info("Recieve a command message!");
 
         return ResponseEntity.ok("");
