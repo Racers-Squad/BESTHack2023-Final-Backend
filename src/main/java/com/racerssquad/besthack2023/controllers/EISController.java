@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @CrossOrigin("http://localhost:3000")
@@ -32,7 +33,7 @@ public class EISController {
 
     @GetMapping("/eis/get/{id}")
     public ResponseEntity<?> getModeOfData(@PathVariable String id) {
-        if (id == null) {
+        if (Objects.equals(id, "null")) {
             return ResponseEntity.ok(new EISInfoDTO(0, Collections.emptyList()));
         }
         log.info("Getting mode of translating data to GUI");
@@ -48,7 +49,7 @@ public class EISController {
         return ResponseEntity.ok(new EISInfoDTO(2, List.of(com1, com2)));
     }
 
-    @PostMapping("/eis/{id}]/execute")
+    @PostMapping("/{id}/execute")
     public ResponseEntity<?> getModeOfData(@PathVariable String id, @RequestBody CommandRequest request) {
         log.info("Recieve a command message!");
         return ResponseEntity.ok("");

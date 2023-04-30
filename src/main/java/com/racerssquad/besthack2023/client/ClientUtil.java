@@ -1,5 +1,6 @@
 package com.racerssquad.besthack2023.client;
 
+import com.racerssquad.besthack2023.DTO.proto.ExchangeInfoMessage;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
@@ -16,10 +17,10 @@ public class ClientUtil {
         }
     }
 
-    public byte[] serialize(Serializable serializable) throws IOException {
+    public byte[] serialize(ExchangeInfoMessage exchangeInfoMessage) throws IOException {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
              ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
-            objectOutputStream.writeObject(serializable);
+            objectOutputStream.writeObject(exchangeInfoMessage);
             return byteArrayOutputStream.toByteArray();
         }
     }

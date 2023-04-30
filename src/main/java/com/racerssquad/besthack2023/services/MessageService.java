@@ -1,8 +1,7 @@
 package com.racerssquad.besthack2023.services;
 
-import lombok.extern.slf4j.Slf4j;
 import com.racerssquad.besthack2023.DTO.proto.ExchangeInfoMessage;
-import com.racerssquad.besthack2023.util.MessageToExchangeInfoDeserializer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
 
@@ -15,3 +14,4 @@ public class MessageService {
         return msg.getPayload();
     }
 }
+
