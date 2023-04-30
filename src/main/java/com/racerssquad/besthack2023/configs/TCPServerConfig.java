@@ -69,44 +69,34 @@ public class TCPServerConfig {
         return tcpInboundGateway;
     }
 
-//    @Bean
-//    public TcpOutboundGateway outboundGateway() {
-//        TcpOutboundGateway tcpOutboundGateway = new TcpOutboundGateway();
-//        tcpOutboundGateway.setReplyChannel(outboundTCPChannel());
-//        return tcpOutboundGateway;
-//    }
-
     @Bean
     public IntegrationFlow integrationFlowFromTcp() {
         return IntegrationFlow.from("TCPChannelIn")
                 .handle("handshake_service", "processMessage")
-//                .handle("central_service", "processMessage")
                 .channel("TCPChannelOut")
-//                .handle(message -> {
-//                    System.out.println("handle output tcp");
-//                })
                 .get();
     }
 
+    @Bean
+    public IntegrationFlow integrationFlowHTTP2TCP() {
+        return IntegrationFlow.from("HTTPChannelOut")
+                .handle("central_service", "processMessage")
+                .channel("TCPChannelIn")
+                .get();
+    }
 //    @Bean
 //    public IntegrationFlow integrationFlowTCP2HTTP() {
 //        return IntegrationFlow.from(outboundTCPChannel())
 //                .channel(inboundHTTPChannel())
 //                .get();
-//    }
 
+//    }
 //    @Bean
 //    public IntegrationFlow integrationFlowToClientTcp() {
 //        return IntegrationFlow.from(inboundHTTPChannel())
 //                .handle("central_service", "processMessage")
 //                .channel("TCPChannelOut")
 //                .get();
-//    }
 
-//    @Bean
-//    public IntegrationFlow integrationFlowHTTP2TCP() {
-//        return IntegrationFlow.from(outboundHTTPChannel())
-//                .channel(inboundTCPChannel())
-//                .get();
 //    }
 }

@@ -62,8 +62,7 @@ public class EISController {
     @PostMapping("/{id}/execute")
     public ResponseEntity<?> getModeOfData(@PathVariable String id, @RequestBody CommandRequest request) {
         log.info("Recieve a command message!");
-
-
+        centralService.executeCommand(id, request);
         return ResponseEntity.ok("");
     }
 }
