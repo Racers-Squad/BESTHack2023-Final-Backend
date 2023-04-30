@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.ip.tcp.TcpInboundGateway;
@@ -77,8 +76,8 @@ public class TCPServerConfig {
     @Bean
     public IntegrationFlow integrationFlowFromTcp() {
         return IntegrationFlow.from("TCPChannelIn")
-                .handle("handshake_service", "processMessage")
-                .channel("outboundTCPChannel")
+                .handle("central_service", "processMessage")
+                .channel("TCPChannelOut")
                 .handle(message -> {
                     System.out.println("handle output tcp");
                 })

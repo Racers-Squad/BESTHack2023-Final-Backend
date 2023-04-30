@@ -17,8 +17,10 @@ public class TcpNioClient {
 
     private static final String HOSTNAME = "localhost";
     private static final int PORT = 2729;
+    static int count = 0;
 
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
+        System.setProperty("java.io.stdout", "unbuffered");
         SocketChannel client = SocketChannel.open();
         client.configureBlocking(false);
         client.connect(new InetSocketAddress(HOSTNAME, PORT));
@@ -48,6 +50,9 @@ public class TcpNioClient {
                             System.exit(1);
                         }
                     } else if (key.isReadable()) {
+                        count +=1;
+                        System.out.println(count);
+                        System.out.println("Pisya");
                         ByteBuffer buffer = ByteBuffer.allocate(1024 * 50);
                         int numBytesRead = client.read(buffer);
                         if (numBytesRead > 0) {
