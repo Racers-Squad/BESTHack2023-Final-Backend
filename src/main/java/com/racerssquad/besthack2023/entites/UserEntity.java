@@ -12,7 +12,8 @@ import jakarta.persistence.*;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "user_id_seq")
+    @SequenceGenerator(name = "user_id_sequense", sequenceName = "user_id_sequense", initialValue = 1, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_sequense")
     @Column(name = "id", columnDefinition = "serial primary key")
     private Long id;
 
