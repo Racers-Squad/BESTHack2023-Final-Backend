@@ -32,4 +32,14 @@ public class EISSystemInformation {
     public String getConnectionIP() {
         return connectionIP;
     }
+
+    @Override
+    public String toString() {
+        return "EISSystemInformation{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", connectionIP='" + connectionIP + '\'' +
+                ", commands=" + commands +
+                '}';
+    }
 }
