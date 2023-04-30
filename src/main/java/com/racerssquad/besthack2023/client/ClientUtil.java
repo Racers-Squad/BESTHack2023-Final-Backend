@@ -1,7 +1,6 @@
 package com.racerssquad.besthack2023.client;
 
 import com.racerssquad.besthack2023.DTO.proto.ExchangeInfoMessage;
-
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;

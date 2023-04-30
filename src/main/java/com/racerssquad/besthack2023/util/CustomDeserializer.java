@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.util.Arrays;
 
 @Component
 public class CustomDeserializer implements Deserializer<Message<ExchangeInfoMessage>> {
@@ -21,7 +25,12 @@ public class CustomDeserializer implements Deserializer<Message<ExchangeInfoMess
 
     @Override
     public Message<ExchangeInfoMessage> deserialize(InputStream inputStream) throws IOException {
-        byte[] serBytes = inputStream.readAllBytes();
+        ByteBuffer buffer = ByteBuffer.allocate(1024); // выделяем буфер для чтения
+        ReadableByteChannel channel = Channels.newChannel(inputStream); // создаем ReadableByteChannel из InputStream
+
+        int bytesRead = channel.read(buffer); // читаем байты в буфер
+        byte[] serBytes = Arrays.copyOf(buffer.array(), bytesRead); // копируем прочитанные байты в новый массив
+
         ExchangeInfoMessage exchangeMessageFromMessage = MessageToExchangeInfoDeserializer.getExchangeMessageFromMessage(serBytes);
         Message<ExchangeInfoMessage> msg = MessageBuilder.withPayload(exchangeMessageFromMessage).build();
         return msg;

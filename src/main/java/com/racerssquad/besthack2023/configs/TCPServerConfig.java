@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.ip.tcp.TcpInboundGateway;
@@ -38,6 +39,11 @@ public class TCPServerConfig {
         return serverConnectionFactory;
     }
 
+    @Bean("TCPChannelIn")
+    public MessageChannel inboundTCPChannel() {
+        return new DirectChannel();
+    }
+
     @Bean("TCPChannelOut")
     public MessageChannel outboundTCPChannel() {
         return new DirectChannel();
@@ -48,36 +54,34 @@ public class TCPServerConfig {
         return new DirectChannel();
     }
 
-    @Bean("TCPChannelIn")
-    public MessageChannel inboundTCPChannel() {
-        return new DirectChannel();
-    }
-
     @Bean("HTTPChannelOut")
     public MessageChannel outboundHTTPChannel() {
         return new DirectChannel();
     }
 
     @Bean
-    public TcpInboundGateway inboundGateway(AbstractServerConnectionFactory serverConnectionFactory,
-                                            MessageChannel TCPChannelOut) {
+    public TcpInboundGateway inboundGateway(AbstractServerConnectionFactory serverConnectionFactory) {
         TcpInboundGateway tcpInboundGateway = new TcpInboundGateway();
         tcpInboundGateway.setConnectionFactory(serverConnectionFactory);
-        tcpInboundGateway.setRequestChannel(TCPChannelOut);
+        tcpInboundGateway.setRequestChannel(inboundTCPChannel());
         return tcpInboundGateway;
     }
 
     @Bean
-    public TcpOutboundGateway outboundGateway(MessageChannel TCPChannelIn) {
+    public TcpOutboundGateway outboundGateway() {
         TcpOutboundGateway tcpOutboundGateway = new TcpOutboundGateway();
-        tcpOutboundGateway.setReplyChannel(TCPChannelIn);
+        tcpOutboundGateway.setReplyChannel(outboundTCPChannel());
         return tcpOutboundGateway;
     }
 
     @Bean
-    public IntegrationFlow integrationFlowFromTcp(){
+    public IntegrationFlow integrationFlowFromTcp() {
         return IntegrationFlow.from("TCPChannelIn")
-                .channel(outboundTCPChannel())
+                .handle("handshake_service", "processMessage")
+                .channel("outboundTCPChannel")
+                .handle(message -> {
+                    System.out.println("handle output tcp");
+                })
                 .get();
     }
 

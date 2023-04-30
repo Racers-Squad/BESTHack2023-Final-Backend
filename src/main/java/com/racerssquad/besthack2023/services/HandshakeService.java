@@ -12,7 +12,10 @@ public class HandshakeService {
     @Autowired
     public CentralService centralService;
 
+
     public ExchangeInfoMessage processMessage(Message<ExchangeInfoMessage> msg) {
+        String clientName = msg.getHeaders().getId().toString();
+        System.out.println("Received request from client " + clientName);
         return GenerateMsgUtils.generateHandshakeReq("server");
     }
 
