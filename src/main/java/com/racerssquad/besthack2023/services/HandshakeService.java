@@ -31,6 +31,8 @@ public class HandshakeService {
                             .build())
                     .build();
             return MessageBuilder.withPayload(handshakeResp).build();
+        } else if (exchInfoMessage.getEvent() != null) {
+            centralService.showEvent(exchInfoMessage);
         }
         return msg;
     }
