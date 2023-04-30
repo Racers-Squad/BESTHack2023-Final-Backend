@@ -7,7 +7,6 @@ import com.racerssquad.besthack2023.util.GenerateRequestToExecuteCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.MessageChannel;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,7 +62,6 @@ public class EISController {
     @PostMapping("/{id}/execute")
     public ResponseEntity<?> getModeOfData(@PathVariable String id, @RequestBody CommandRequest request, @Autowired MessageChannel outboundTCPChannel) {
         log.info("Recieve a command message!");
-//        outboundTCPChannel.s
 
         return ResponseEntity.ok("");
     }

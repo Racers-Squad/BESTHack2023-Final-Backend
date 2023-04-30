@@ -2,8 +2,6 @@ package com.racerssquad.besthack2023.services;
 
 import com.racerssquad.besthack2023.DTO.proto.*;
 import com.racerssquad.besthack2023.util.EISSystemInformation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.MessageChannel;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,15 +12,14 @@ public class CentralService {
 
 
     private int birzhaId = 0;
-
     List<EISSystemInformation> birzhi = new ArrayList<>();
-
-    public void addEIS(String connectionIP, List<OwnCommand> supportedCommands) {
+    public void addEIS(String connectionIP, List<OwnCommand> supportedCommands){
         EISSystemInformation birzha = new EISSystemInformation(birzhaId, "EIS" + birzhaId, connectionIP, supportedCommands);
-        birzhaId += 1;
+        birzhaId +=1;
         birzhi.add(birzha);
         System.out.println("Amount" + birzhi.size() + " Dobavili " + birzha);
     }
+
 
     public void showEvent(ExchangeInfoMessage eventMessage) {
         Event event = eventMessage.getEvent();
