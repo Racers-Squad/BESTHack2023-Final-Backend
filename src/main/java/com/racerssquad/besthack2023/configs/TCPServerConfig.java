@@ -75,6 +75,13 @@ public class TCPServerConfig {
     }
 
     @Bean
+    public IntegrationFlow integrationFlowFromTcp(){
+        return IntegrationFlow.from("TCPChannelIn")
+                .channel(outboundTCPChannel())
+                .get();
+    }
+
+    @Bean
     public IntegrationFlow integrationFlowTCP2HTTP() {
         return IntegrationFlow.from(outboundTCPChannel())
                 .channel(inboundHTTPChannel())
@@ -82,7 +89,15 @@ public class TCPServerConfig {
     }
 
     @Bean
-    public IntegrationFlow integrationFlowHTTP2TCP(){
+    public IntegrationFlow integrationFlowToClientTcp() {
+        return IntegrationFlow.from(inboundHTTPChannel())
+                .handle("handshake_service", "processMessage")
+                .channel("TCPChannelOut")
+                .get();
+    }
+
+    @Bean
+    public IntegrationFlow integrationFlowHTTP2TCP() {
         return IntegrationFlow.from(outboundHTTPChannel())
                 .channel(inboundTCPChannel())
                 .get();

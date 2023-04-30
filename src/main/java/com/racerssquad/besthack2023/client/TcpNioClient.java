@@ -35,12 +35,12 @@ public class TcpNioClient {
         client.write(buffer);
         System.out.println("send");
         buffer.clear();
-//        ExchangeInfoMessage receive = (ExchangeInfoMessage) clientUtil.receive(client, buffer);
-//        buffer.flip();
-//        byte[] data = new byte[buffer.remaining()];
-//        buffer.get(data);
-//        System.out.println(receive.getHeader().getReceiver());
-
+        ExchangeInfoMessage receive = (ExchangeInfoMessage) clientUtil.receive(client, buffer);
+        buffer.flip();
+        byte[] data = new byte[buffer.remaining()];
+        buffer.get(data);
+        System.out.println(receive.getHeader().getReceiver());
+//        Thread.sleep(5000L);
         client.close();
     }
 }

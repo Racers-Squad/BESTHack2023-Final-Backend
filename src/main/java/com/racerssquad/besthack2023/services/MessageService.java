@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class MessageService {
 
     public ExchangeInfoMessage processMessage(Message<ExchangeInfoMessage> msg) {
-//        System.out.println("Received message:" + msg.getPayload().getRequest().getCommand().name());
+        System.out.println("Received message:" + msg.getPayload().getRequest().getCommand().name());
         return msg.getPayload();
     }
 }
