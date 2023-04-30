@@ -12,9 +12,7 @@ public class WebSocketService {
     @Autowired
     SimpMessagingTemplate simpMessagingTemplate;
     @MessageMapping("/events")
-    public void sendEvent(EventDTO event, String user){
-        simpMessagingTemplate.convertAndSendToUser(user,"/queue/events", event);
+    public void sendEvent(EventDTO event, String user) {
+        simpMessagingTemplate.convertAndSendToUser(user, "/queue/events", event);
     }
-
-
 }

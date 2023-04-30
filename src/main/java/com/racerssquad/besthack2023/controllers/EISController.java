@@ -1,7 +1,11 @@
 package com.racerssquad.besthack2023.controllers;
 
 import com.racerssquad.besthack2023.DTO.*;
+import com.racerssquad.besthack2023.DTO.proto.*;
+import com.racerssquad.besthack2023.services.CentralService;
+import com.racerssquad.besthack2023.util.GenerateRequestToExecuteCommand;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +22,12 @@ import java.util.Objects;
 @CrossOrigin("http://localhost:3000")
 @Slf4j
 public class EISController {
+
+    @Autowired
+    private CentralService centralService;
+
+    @Autowired
+    private GenerateRequestToExecuteCommand generateRequestToExecuteCommand;
 
     @GetMapping("/eis/services")
     public ResponseEntity<?> getServices() {
@@ -52,6 +62,8 @@ public class EISController {
     @PostMapping("/{id}/execute")
     public ResponseEntity<?> getModeOfData(@PathVariable String id, @RequestBody CommandRequest request) {
         log.info("Recieve a command message!");
+
+
         return ResponseEntity.ok("");
     }
 }
